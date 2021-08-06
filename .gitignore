@@ -130,4 +130,4 @@ dmypy.json
 
 
 # docker image path
-docker_images/images/*
+#docker_images/images/*

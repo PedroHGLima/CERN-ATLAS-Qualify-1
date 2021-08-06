@@ -88,4 +88,28 @@ Verifique a instalação
 singularity --version
 ```
 
-##
+### Clonagem da imagem do projeto
+O João Victor (lider do time de desenvolvimento) fez uma versão da image do docker (que será utilizada com o singularity) e esta está em [link](https://hub.docker.com/r/jodafons/ringer)
+
+```console
+singularity pull docker://jodafons/ringer:base
+```
+
+Em seguida, após o download da imagem, execute o seguinte comando para rodar:
+OBS: O argumento `--nv` deve ser utilizado caso o computador tenha uma placa de vídeo para que a GPU seja utilizada no container.
+
+```console
+singularity run --nv ringer_base.sif
+```
+
+Agora dentro do ambiente, faça o setup das dependências:
+```console
+source /setup_all_here.sh ringer-atlas
+```
+
+OBS: O atributo “ringer-atlas” no final desse comando direciona o setup para fazer o clone das frameworks localizadas no repositório do ringer-atlas ([link](https://github.com/ringer-atlas)). Foi recomendado pelo Micael fazer um fork dos repositórios para o seu próprio usuário no github e na hora de executar o comando direcionar para o seu usuário. Por exemplo, no meu caso:
+
+
+```console
+source /setup_all_here.sh natmourajr
+```

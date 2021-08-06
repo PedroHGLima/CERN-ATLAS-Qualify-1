@@ -21,7 +21,7 @@ echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] 
 sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io
 ```
-Comando para listar as possíveis enginer disponíveis (eu instalei a **5:20.10.7~3-0~ubuntu-hirsute**)
+Comando para listar as possíveis enginer disponíveis (eu instalei a **5:20.10.7\~3-0\~ubuntu-hirsute**)
 
 ```console
 sudo apt-cache madison docker-ce

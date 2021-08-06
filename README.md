@@ -1,9 +1,9 @@
 # CERN-ATLAS-Qualify
 
-## Tarefa a ser relaizada
+## Tarefa a ser realizada
 The ringer algorithm has been successfully implemented and deployed in the HLT fast step, improving early rejection of fake electrons and saving CPU time downstream in the HLT precision step. For this qualification task, the ringer algorithm training needs to be updated towards Run-3 conditions, in particular to cope with increased pileup. The training of the ringer selection will also consider boosted topologies to avoid reducing the efficiency of close by electrons as much as possible. Progress will be documented and discussed in TrigEgamma meetings, Jira tickets and MRs.
 
-### Para rodar o repositório
+### Para rodar os códigos do time do ATLAS Ringer
 
 ### instalação docker (ubuntu 21.04)
 Primeiro, vamos a instalação do docker
@@ -47,3 +47,45 @@ Extraia o arquivo e mova para **/usr/local** (todos os usuários com acesso)
 sudo tar -xvf go1.16.5.linux-amd64.tar.gz
 sudo mv go /usr/local
 ```
+
+#### Setup do environment do Go
+É necessário ter 3 variáveis de ambiente para utilizar o Go. Portanto, você deve adicionar as seguintes linhas no arquivo **$HOME/.bashrc**):
+```console
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+```
+
+Verifique a instalação
+```console
+go version
+```
+#### Instalação singularity
+
+Clone o repositório do Singularity
+```console
+mkdir -p $GOPATH/src/github.com/sylabs
+cd $GOPATH/src/github.com/sylabs
+git clone https://github.com/sylabs/singularity.git
+cd singularity
+```
+
+Instale as dependências do Go:
+```console
+go get -u -v github.com/golang/dep/cmd/dep
+```
+
+Compile o Singularity
+```console
+cd $GOPATH/src/github.com/sylabs/singularity
+./mconfig
+make -C builddir
+sudo make -C builddir install
+```
+
+Verifique a instalação
+```console
+singularity --version
+```
+
+##

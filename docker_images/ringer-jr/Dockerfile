@@ -68,3 +68,5 @@ COPY setup_root.sh .
 COPY setup_all_here.sh .
 RUN chmod 777 /setup_root.sh
 RUN chmod 777 /setup_all_here.sh
+RUN mkdir -p /home/user/workspace
+WORKDIR /home/user/workspace

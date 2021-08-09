@@ -5,7 +5,7 @@ The ringer algorithm has been successfully implemented and deployed in the HLT f
 
 ### Para rodar os códigos do time do ATLAS Ringer
 
-### instalação docker (ubuntu 21.04)
+### Instalação docker (ubuntu 21.04)
 Primeiro, vamos a instalação do docker
 
 ```console
@@ -15,7 +15,7 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o 
 echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 ```
 
-### instalação da engine do docker (ubuntu 21.04)
+### Instalação da engine do docker (ubuntu 21.04)
 
 ```console
 sudo apt-get update
@@ -34,7 +34,7 @@ Para testar tudo
 sudo docker run hello-world
 ```
 
-### instalação do singularity (ubuntu 21.04)
+### Instalação do singularity (ubuntu 21.04)
 
 Como o time do projeto utiliza o **singularity**, precisamos instalar o Go para fazer tudo funcionar. Eu escolhi a versão **1.16.5** do Go e vou instalar a mesma. Caso seja necessário, você pode checar se tem outra versão disponível em [Go WebSite](https://golang.org/dl/)
 
@@ -112,4 +112,13 @@ OBS: O atributo “ringer-atlas” no final desse comando direciona o setup para
 
 ```console
 source /setup_all_here.sh natmourajr
+```
+
+### Instalação ROOT (ubuntu 21.04)
+
+O ROOT é um framework de análise escrito e suportado por físicos em [link](https://root.cern/). A instalação sempre é complexa e eu estou instalação a versão v6.16.00 (utilizada pelo grupo do Ringer-ATLAS). Para executar a instalação, rode o código abaixo (é necessária a senha de root do computador)
+
+```console
+cd <path>/CERN-ATLAS-Qualify
+source installROOT.sh
 ```

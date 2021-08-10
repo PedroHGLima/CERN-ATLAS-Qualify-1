@@ -1,0 +1,1 @@
+singularity pull docker://jlieberm/ringer_base:latest

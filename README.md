@@ -116,7 +116,7 @@ source /setup_all_here.sh natmourajr
 
 ### Instalação ROOT (ubuntu 21.04)
 
-O ROOT é um framework de análise escrito e suportado por físicos em [link](https://root.cern/). A instalação sempre é complexa e eu estou instalação a versão v6.16.00 (utilizada pelo grupo do Ringer-ATLAS). Para executar a instalação, rode o código abaixo (é necessária a senha de root do computador)
+O ROOT é um framework de análise escrito e suportado por físicos em [link](https://root.cern/). A instalação sempre é complexa e eu estou instalação a versão v6.16.00 (utilizada pelo grupo do Ringer-ATLAS). Para executar a instalação, rode o código abaixo (é necessária a senha de root do computador e fique atento que este script vai gerar duas pastas meio grandes no local onde o código será rodado.)
 
 ```console
 cd <path>/CERN-ATLAS-Qualify

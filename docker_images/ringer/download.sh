@@ -1,0 +1,1 @@
+singularity pull docker://jodafons/ringer:base

@@ -1,0 +1,1 @@
+python3 plot_local_quadrant.py -i local_quadrant_egam1/local_quadrant_egam1.root

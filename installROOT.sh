@@ -6,7 +6,7 @@ sudo add-apt-repository ppa:rock-core/qt4
 sudo apt update
 sudo apt-get install libqt4-dev
 sudo apt-get install git
-git clone --branch v6-22-00-patches https://github.com/root-project/root.git root_src
+git clone --branch v6-16-00-patches https://github.com/root-project/root.git root_src
 mkdir root_build && cd root_build
 #mkdir /usr/local/lib/root/
 cmake -DCMAKE_INSTALL_PREFIX=/usr/local/lib/ -DPYTHON_EXECUTABLE=/usr/bin/python3 -DPYHTON_INCDIR=/usr/local/lib/include/ -DPYTHON_LIBDIR=/usr/lib ../root_src

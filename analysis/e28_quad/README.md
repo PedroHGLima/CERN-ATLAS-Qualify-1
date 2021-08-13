@@ -1,6 +1,7 @@
 # CERN-ATLAS-Qualify/analysis/e28_quad
 
-Esta análise foi feita junto com o Micael (micael.verissimo@lps.ufrj.br) para mostrar um exemplo quadrantes utilizados no Trigger
+Esta análise foi feita junto com o Micael (micael.verissimo@lps.ufrj.br) para mostrar um exemplo quadrantes utilizados no Trigger. Aqui a análise foi feita na chain `HLT_e28_lhtight_nod0` do trigger de elétrons. Aqui foram comparados os trigger `V8` e `V11` para esta chain especificada.
+
 
 ## Para rodar o processamento dos dados
 

@@ -1,6 +1,6 @@
-# CERN-ATLAS-Qualify/analysis/algorithm_quad
+# CERN-ATLAS-Qualify/analysis/efficiency_plot
 
-Esta análise foi feita junto com o Micael (micael.verissimo@lps.ufrj.br) para mostrar um exemplo de comparação em Ringer `V8` e Ringer `V11` sem outras etapas de filtragem (muito importante) - saída do modelo efetivamente sem nenhuma seleção (viés) de chain, sem trigger! Similar a um predict dos modelos para cada uma entradas.
+Esta análise foi feita junto com o Micael (micael.verissimo@lps.ufrj.br) para mostrar um exemplo de comparação entre `noringer`, Ringer `V8` e Ringer `V11` as eficiências para diferentes etapas de filtragem em função de diferentes variáveis.
 
 ## Para rodar o processamento dos dados
 

@@ -9,7 +9,7 @@ Esta análise foi feita junto com o Micael (micael.verissimo@lps.ufrj.br) para m
 source run_job_quad.sh
 ```
 
-Depois de rodar este comando, uma pasta chamada `egam1_test` com um arquivo `egam1_test.root` dentro. Este arquivo deve ser processado para gerar os gráficos de análise formatado da maneira que o grupo utiliza.
+Depois de rodar este comando, uma pasta chamada  `egam1_test` com um arquivo `egam1_test.root` dentro. Este arquivo deve ser processado para gerar os gráficos de análise formatado da maneira que o grupo utiliza.
 
 ## Para rodar o processamento dos gráficos
 

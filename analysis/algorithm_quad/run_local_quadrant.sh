@@ -1,4 +1,4 @@
-prun_jobs.py -c "python job_local_quadrant.py --Zee" -i /home/natmourajr/Workspace/CERN/Qualify/data/PhysVal_v2/EGAM1/after_ts1/* -mt 8
+prun_jobs.py -c "python job_local_quadrant.py --Zee" -i /home/natmourajr/Workspace/CERN/Qualify/data/PhysVal_v2/EGAM1/after_ts1/* -mt 40
 
 
 # to run one file only

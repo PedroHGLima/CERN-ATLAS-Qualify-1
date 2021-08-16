@@ -72,6 +72,7 @@ from TrigEgammaEmulationTool import installElectronL2CaloRingerSelector_v8, inst
 # Add all chains into the emulator
 emulator = ToolSvc.retrieve( "Emulator" )
 # install selectors
+# search on prometheus/trigger/install.py
 installElectronL2CaloRingerSelector_v8()
 installElectronL2CaloRingerSelector_v11()
 

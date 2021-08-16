@@ -6,9 +6,14 @@ from Gaugi.messenger import LoggingLevel, Logger
 from Gaugi import ToolSvc, ToolMgr
 
 
+jr_verbose = False
+
+if jr_verbose: print(1)
 mainLogger = Logger.getModuleLogger("job")
 parser = argparse.ArgumentParser(description = '', add_help = False)
 parser = argparse.ArgumentParser()
+
+if jr_verbose: print(2)
 
 parser.add_argument('-i','--inputFiles', action='store', 
     dest='inputFiles', required = True, nargs='+',
@@ -31,6 +36,7 @@ parser.add_argument('--egam7', action='store_true',
     help = "The colelcted sample came from EGAM7 skemma.")
 
 
+if jr_verbose: print(3)
 import sys,os
 if len(sys.argv)==1:
   parser.print_help()
@@ -45,6 +51,8 @@ acc = EventATLAS( "EventATLASLoop",
                   outputFile = args.outputFile,
                   level = LoggingLevel.INFO
                   )
+
+if jr_verbose: print(4)
 
 from EventSelectionTool import EventSelection, SelectionType, EtCutType
 evt = EventSelection('EventSelection')
@@ -65,8 +73,11 @@ evt.setCutValue( SelectionType.SelectionPID, pidname )
 evt.setCutValue( EtCutType.L2CaloAbove, 15.)
 #evt.setCutValue( EtCutType.OfflineAbove, 2.)
 
+if jr_verbose: print(5)
 
 ToolSvc += evt
+
+if jr_verbose: print(5.1)
 
 from TrigEgammaEmulationTool import Chain
 
@@ -75,6 +86,8 @@ triggerList = [
                 Chain( "EMU_e28_lhtight_nod0_ringer_v11",  "L1_EM3", "HLT_e28_lhtight_nod0_ringer_v11" ),
               ]
 
+if jr_verbose: print(6)
+
 # Add all chains into the emulator
 emulator = ToolSvc.retrieve( "Emulator" )
 for chain in triggerList:
@@ -82,7 +95,7 @@ for chain in triggerList:
   if not emulator.isValid( chain.name() ):
     emulator+=chain
 
-
+if jr_verbose: print(7)
 
 from QuadrantTools import QuadrantTool
 q_alg = QuadrantTool("Quadrant")
@@ -90,11 +103,14 @@ q_alg.add_quadrant( "HLT_e28_lhtight_nod0_ringer_v8"  , "EMU_e28_lhtight_nod0_ri
                     'HLT_e28_lhtight_nod0_ringer_v11' , "EMU_e28_lhtight_nod0_ringer_v11" # Ringer v11
                   ) 
 
+if jr_verbose: print(8)
+
 # vloose chain
 #q_alg.add_quadrant( 'HLT_e5_lhvloose_nod0_noringer'  , "EMU_e5_lhvloose_nod0_noringer", # T2Calo
 #                    'HLT_e5_lhvloose_nod0_ringer_v1' , "EMU_e5_lhvloose_nod0_ringer_v1" # Ringer v1
 #                  ) 
 
+if jr_verbose: print(9)
 
 etlist = [15.0,20.0,25.0,30.0,35.0,40.0,45.0,50.0,50000.0]
 etalist= [ 0.0, 0.6, 0.8, 1.15, 1.37, 1.52, 1.81, 2.01, 2.37, 2.47 ]
@@ -117,9 +133,10 @@ ToolSvc += q_alg
 #i_alg.setEtaBinningValues(etalist)
 #ToolSvc += i_alg
 
+if jr_verbose: print(10)
 
 acc.run(args.nov)
 
-
+if jr_verbose: print(11)
 #/home/natmourajr/Workspace/CERN/Qualify/data/PhysVal_v2/EGAM1/after_ts1/user.jodafons.data17_13TeV.00339205.physics_Main.deriv.DAOD_EGAM1.f887_m1897_p3336.Physval.GRL_v97.r7000_GLOBAL
 #user.jodafons.13861574.GLOBAL._000005.root

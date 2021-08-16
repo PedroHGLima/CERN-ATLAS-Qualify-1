@@ -39,11 +39,26 @@ basepath = 'Event/EfficiencyTool'
 sg =  restoreStoreGate( inputFile )
 
 chain_dict_config = {
+  # e26_lhtight_nod0
   'HLT_e26_lhtight_nod0_ivarloose' : {
                             'triggers' : ["EMU_e26_lhtight_nod0_ringer_v8_ivarloose", 
                                           "EMU_e26_lhtight_nod0_ringer_v11_ivarloose",
                                           "EMU_e26_lhtight_nod0_noringer_ivarloose"],
                             'plotname' : 'efficiency_v1_boosted_%s_%s_e26_lhtight_nod0_ivarloose_eff',
+                            },
+  # e60_lhmedium_nod0
+  'HLT_e60_lhmedium_nod0' : {
+                            'triggers' : ["EMU_e60_lhmedium_nod0_ringer_v8", 
+                                          "EMU_e60_lhmedium_nod0_ringer_v11",
+                                          "EMU_e60_lhmedium_nod0_noringer"],
+                            'plotname' : 'efficiency_v1_boosted_%s_%s_e60_lhmedium_nod0_eff',
+                            },
+  # e140_lhloose_nod0
+  'HLT_e140_lhloose_nod0' : {
+                            'triggers' : ["EMU_e140_lhloose_nod0_ringer_v8", 
+                                          "EMU_e140_lhloose_nod0_ringer_v11",
+                                          "EMU_e140_lhloose_nod0_noringer"],
+                            'plotname' : 'efficiency_v1_boosted_%s_%s_e140_lhloose_nod0_eff',
                             },
 }
 

@@ -62,6 +62,13 @@ from TrigEgammaEmulationTool import Chain, Group, TDT
 # Trigger list 
  
 triggerList = [
+    # e24_lhtight_nod0
+    Group(Chain('EMU_e24_lhtight_nod0_ringer_v8_ivarloose',
+                'L1_EM3', 'HLT_e24_lhtight_nod0_ringer_v8_ivarloose'), 'el_lhtight', 24),
+    Group(Chain('EMU_e24_lhtight_nod0_ringer_v11_ivarloose',
+                'L1_EM3', 'HLT_e24_lhtight_nod0_ringer_v11_ivarloose'), 'el_lhtight', 24),
+    Group(Chain('EMU_e24_lhtight_nod0_noringer_ivarloose',
+                'L1_EM3', 'HLT_e24_lhtight_nod0_noringer_ivarloose'), 'el_lhtight', 24),
     # e26_lhtight_nod0
     Group(Chain('EMU_e26_lhtight_nod0_ringer_v8_ivarloose',
                 'L1_EM3', 'HLT_e26_lhtight_nod0_ringer_v8_ivarloose'), 'el_lhtight', 26),

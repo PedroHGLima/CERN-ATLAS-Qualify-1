@@ -62,7 +62,7 @@ outputs = [
             'quadrant_data17_egam2_lhtight_ringer_v8_and_ringer_v11',
             'quadrant_data17_egam2_lhmedium_ringer_v8_and_ringer_v11',
             'quadrant_data17_egam2_lhloose_ringer_v8_and_ringer_v11',
-            'quadrant_data17_egam2_lhvloose_ringer_v8_and_ringer_v11'
+            'quadrant_data17_egam2_lhvloose_ringer_v8_and_ringer_v11',
             ]
 
 legends = ['Both Approved', 'Ringer V8 Only Approved', 'Ringer V11 Only Approved', 'Both Rejected']
@@ -71,7 +71,7 @@ names   = [
             'Quadrant Analysis lhtight Ringer V8 vs Ringer V11 (data17-EGAM1)',
             'Quadrant Analysis lhmedium Ringer V8 vs Ringer V11 (data17-EGAM1)',
             'Quadrant Analysis lhloose Ringer V8 vs Ringer V11 (data17-EGAM1)',
-            'Quadrant Analysis lhvloose Ringer V8 vs Ringer V11 (data17-EGAM1)'
+            'Quadrant Analysis lhvloose Ringer V8 vs Ringer V11 (data17-EGAM1)',
             ]
 
 q_alg.plot(outputs, outputs, names,legends=legends, doPDF=True)

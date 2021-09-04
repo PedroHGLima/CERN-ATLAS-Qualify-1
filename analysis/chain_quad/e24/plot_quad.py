@@ -36,13 +36,13 @@ alg.setEtaBinningValues(etalist)
 ToolSvc += alg
 
 alg.add_quadrant( "HLT_e24_lhtight_nod0_ringer_v8_ivarloose"  , "EMU_e24_lhtight_nod0_ringer_v8_ivarloose", # Ringer v8
-                  'HLT_e24_lhtight_nod0_ringer_v11_ivarloose' , "EMU_e24_lhtight_nod0_ringer_v11_ivarloose" # Ringer v11
+                  'HLT_e24_lhtight_nod0_ringer_v9_ivarloose' , "EMU_e24_lhtight_nod0_ringer_v9_ivarloose" # Ringer v9
                 ) 
 
 outputs = [
-            'plot_quadrant_data17_ringer_v8_vs_ringer_v11',
+            'plot_quadrant_data17_ringer_v8_vs_ringer_v9',
             ]
 
-legends = ['Both Approved', 'Ringer V11 Approved Only', 'Ringer V8 Approved Only', 'Both Rejected']
+legends = ['Both Approved', 'Ringer V9 Approved Only', 'Ringer V8 Approved Only', 'Both Rejected']
 
-alg.plot(outputs, outputs, ['Quadrant Analysis e24 lhtight ringer-v8 vs ringer-v11 (data17-EGAM1)'] ,legends=legends, doPDF=True)
+alg.plot(outputs, outputs, ['Quadrant Analysis e24 lhtight ringer-v8 vs ringer-v9 (data17-EGAM1)'] ,legends=legends, doPDF=True)

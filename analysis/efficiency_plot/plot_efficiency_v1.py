@@ -42,28 +42,28 @@ chain_dict_config = {
   # e24_lhtight_nod0
   'HLT_e24_lhtight_nod0_ivarloose' : {
                             'triggers' : ["EMU_e24_lhtight_nod0_ringer_v8_ivarloose", 
-                                          "EMU_e24_lhtight_nod0_ringer_v11_ivarloose",
+                                          "EMU_e24_lhtight_nod0_ringer_v9_ivarloose",
                                           "EMU_e24_lhtight_nod0_noringer_ivarloose"],
                             'plotname' : 'efficiency_v1_boosted_%s_%s_e24_lhtight_nod0_ivarloose_eff',
                             },
   # e26_lhtight_nod0
   'HLT_e26_lhtight_nod0_ivarloose' : {
                             'triggers' : ["EMU_e26_lhtight_nod0_ringer_v8_ivarloose", 
-                                          "EMU_e26_lhtight_nod0_ringer_v11_ivarloose",
+                                          "EMU_e26_lhtight_nod0_ringer_v9_ivarloose",
                                           "EMU_e26_lhtight_nod0_noringer_ivarloose"],
                             'plotname' : 'efficiency_v1_boosted_%s_%s_e26_lhtight_nod0_ivarloose_eff',
                             },
   # e60_lhmedium_nod0
   'HLT_e60_lhmedium_nod0' : {
                             'triggers' : ["EMU_e60_lhmedium_nod0_ringer_v8", 
-                                          "EMU_e60_lhmedium_nod0_ringer_v11",
+                                          "EMU_e60_lhmedium_nod0_ringer_v9",
                                           "EMU_e60_lhmedium_nod0_noringer"],
                             'plotname' : 'efficiency_v1_boosted_%s_%s_e60_lhmedium_nod0_eff',
                             },
   # e140_lhloose_nod0
   'HLT_e140_lhloose_nod0' : {
                             'triggers' : ["EMU_e140_lhloose_nod0_ringer_v8", 
-                                          "EMU_e140_lhloose_nod0_ringer_v11",
+                                          "EMU_e140_lhloose_nod0_ringer_v9",
                                           "EMU_e140_lhloose_nod0_noringer"],
                             'plotname' : 'efficiency_v1_boosted_%s_%s_e140_lhloose_nod0_eff',
                             },
@@ -82,7 +82,7 @@ for ichain in chain_dict_config.keys():
     eff_mu  = [ get(sg, basepath+'/'+trigger+'/Efficiency/%s'%(istep), 'mu', [8,20,60]) for trigger in triggers ]
     eff_deltaR  = [ get(sg, basepath+'/'+trigger+'/Efficiency/%s'%(istep), 'deltaR') for trigger in triggers ]
     
-    legends = ['ringer v8', 'ringer v11', 'no ringer']#, 'ringer old v1', 'ringer old v1 2']
+    legends = ['ringer v8', 'ringer v9', 'no ringer']#, 'ringer old v1', 'ringer old v1 2']
 
 
     for trigger in triggers:
@@ -103,3 +103,18 @@ for ichain in chain_dict_config.keys():
       PlotProfiles( eff_deltaR, legends=legends,runLabel='mc16 13TeV', outname='%s_deltaR.pdf' %(plotname),theseColors=theseColors,
                     extraText1=ichain, doRatioCanvas=False, legendX1=.65, xlabel='#Delta R', rlabel='Trigger/Ref.',ylabel='Trigger Efficiency')
 
+      PlotProfiles( eff_et, legends=legends,runLabel='mc16 13TeV', outname='%s_et.pdf' %(plotname), theseColors=theseColors,
+                    extraText1=ichain,doRatioCanvas=False, legendX1=.65, xlabel='E_{T}', rlabel='Trigger/Ref.',ylabel='Trigger Efficiency')
+
+      # plot png
+      PlotProfiles( eff_eta, legends=legends,runLabel='mc16 13TeV', outname='%s_eta.png' %(plotname),theseColors=theseColors,
+                    extraText1=ichain, doRatioCanvas=False, legendX1=.65, xlabel='#eta', rlabel='Trigger/Ref.',ylabel='Trigger Efficiency')
+
+      PlotProfiles( eff_phi, legends=legends,runLabel='mc16 13TeV', outname='%s_phi.png' %(plotname),theseColors=theseColors,
+                    extraText1=ichain, doRatioCanvas=False, legendX1=.65, xlabel='#phi', rlabel='Trigger/Ref.',ylabel='Trigger Efficiency')
+
+      PlotProfiles( eff_mu, legends=legends,runLabel='mc16 13TeV', outname='%s_mu.png' %(plotname),theseColors=theseColors,
+                    extraText1=ichain, doRatioCanvas=False, legendX1=.65, xlabel='<#mu>', rlabel='Trigger/Ref.',ylabel='Trigger Efficiency')
+
+      PlotProfiles( eff_deltaR, legends=legends,runLabel='mc16 13TeV', outname='%s_deltaR.png' %(plotname),theseColors=theseColors,
+                    extraText1=ichain, doRatioCanvas=False, legendX1=.65, xlabel='#Delta R', rlabel='Trigger/Ref.',ylabel='Trigger Efficiency')

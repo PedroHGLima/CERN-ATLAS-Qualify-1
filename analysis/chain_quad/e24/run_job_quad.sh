@@ -1,4 +1,4 @@
-prun_jobs.py -c "python job_quad.py --Zee" -mt 20 -i /home/natmourajr/Workspace/CERN/Qualify/data/PhysVal_v2/EGAM1/after_ts1/*
+prun_jobs.py -c "python job_quad.py --Zee" -mt 20 -i /home/natmourajr/Workspace/CERN/Qualify/data/PhysVal_v2/EGAM1/after_ts1/user.jodafons.data17_13TeV.00339205.physics_Main.deriv.DAOD_EGAM1.f887_m1897_p3336.Physval.GRL_v97.r7000_GLOBAL/user.jodafons.13861574.GLOBAL._0000* -mt 6
                     
 # to run in one file (fast...)
 # -i /home/natmourajr/Workspace/CERN/Qualify/data/PhysVal_v2/EGAM1/after_ts1/user.jodafons.data17_13TeV.00339205.physics_Main.deriv.DAOD_EGAM1.f887_m1897_p3336.Physval.GRL_v97.r7000_GLOBAL/user.jodafons.13861574.GLOBAL._0000* -mt 6

@@ -83,7 +83,7 @@ from TrigEgammaEmulationTool import Chain
 
 triggerList = [
                 Chain( "EMU_e24_lhtight_nod0_ringer_v8_ivarloose" ,  "L1_EM3", "HLT_e24_lhtight_nod0_ringer_v8_ivarloose"  ),
-                Chain( "EMU_e24_lhtight_nod0_ringer_v11_ivarloose",  "L1_EM3", "HLT_e24_lhtight_nod0_ringer_v11_ivarloose" ),
+                Chain( "EMU_e24_lhtight_nod0_ringer_v9_ivarloose",  "L1_EM3", "HLT_e24_lhtight_nod0_ringer_v9_ivarloose" ),
               ]
 
 if jr_verbose: print(6)
@@ -100,7 +100,7 @@ if jr_verbose: print(7)
 from QuadrantTools import QuadrantTool
 q_alg = QuadrantTool("Quadrant")
 q_alg.add_quadrant( "HLT_e24_lhtight_nod0_ringer_v8_ivarloose"  , "EMU_e24_lhtight_nod0_ringer_v8_ivarloose", # Ringer v8
-                    'HLT_e24_lhtight_nod0_ringer_v11_ivarloose' , "EMU_e24_lhtight_nod0_ringer_v11_ivarloose" # Ringer v11
+                    'HLT_e24_lhtight_nod0_ringer_v9_ivarloose' , "EMU_e24_lhtight_nod0_ringer_v9_ivarloose" # Ringer v11
                   ) 
 
 if jr_verbose: print(8)

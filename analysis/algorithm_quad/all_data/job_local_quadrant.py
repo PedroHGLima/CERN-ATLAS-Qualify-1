@@ -84,22 +84,22 @@ q_alg = QuadrantTool("Quadrant")
 q_alg.add_quadrant( 
                 # tight
                 'ringer_v8_tight', 'T0HLTElectronRingerTight_v8', # Ringer v8
-                'ringer_v11_tight', 'T0HLTElectronRingerTight_v11'  # Ringer v11
+                'ringer_v9_tight', 'T0HLTElectronRingerTight_v9'  # Ringer v9
                 )
 q_alg.add_quadrant( 
                 # medium
                 'ringer_v8_medium', 'T0HLTElectronRingerMedium_v8', # Ringer v8
-                'ringer_v11_medium', 'T0HLTElectronRingerMedium_v11'  # Ringer v11
+                'ringer_v9_medium', 'T0HLTElectronRingerMedium_v9'  # Ringer v9
                 )
 q_alg.add_quadrant( 
                 # loose
                 'ringer_v8_loose', 'T0HLTElectronRingerLoose_v8', # Ringer v8
-                'ringer_v11_loose', 'T0HLTElectronRingerLoose_v11'  # Ringer v11
+                'ringer_v9_loose', 'T0HLTElectronRingerLoose_v9'  # Ringer v9
                 )
 q_alg.add_quadrant( 
                 # very loose
                 'ringer_v8_vloose', 'T0HLTElectronRingerVeryLoose_v8', # Ringer v8
-                'ringer_v11_vloose', 'T0HLTElectronRingerVeryLoose_v11'  # Ringer v11
+                'ringer_v9_vloose', 'T0HLTElectronRingerVeryLoose_v9'  # Ringer v9
                 )
 # first let's run using the same binning thar was used in the training
 #etlist = [3.0, 7.0, 10.0, 15.0]

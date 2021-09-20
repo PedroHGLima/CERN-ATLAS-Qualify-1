@@ -1,0 +1,5 @@
+{
+    "python.defaultInterpreterPath": "/home/natmourajr/.pyenv/versions/cern_virtualenv/bin/python3",
+    "python.envFile": "${workspaceFolder}/.env",
+    "jupyter.jupyterServerType": "local"
+}

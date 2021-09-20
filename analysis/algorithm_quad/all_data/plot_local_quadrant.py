@@ -31,22 +31,22 @@ q_alg.setStoreGateSvc(sg)
 q_alg.add_quadrant( 
                 # tight
                 'ringer_v8_tight', 'T0HLTElectronRingerTight_v8', # Ringer v8
-                'ringer_v11_tight', 'T0HLTElectronRingerTight_v11'  # Ringer v11
+                'ringer_v9_tight', 'T0HLTElectronRingerTight_v9'  # Ringer v9
                 )
 q_alg.add_quadrant( 
                 # medium
                 'ringer_v8_medium', 'T0HLTElectronRingerMedium_v8', # Ringer v8
-                'ringer_v11_medium', 'T0HLTElectronRingerMedium_v11'  # Ringer v11
+                'ringer_v9_medium', 'T0HLTElectronRingerMedium_v9'  # Ringer v9
                 )
 q_alg.add_quadrant( 
                 # loose
                 'ringer_v8_loose', 'T0HLTElectronRingerLoose_v8', # Ringer v8
-                'ringer_v11_loose', 'T0HLTElectronRingerLoose_v11'  # Ringer v11
+                'ringer_v9_loose', 'T0HLTElectronRingerLoose_v9'  # Ringer v9
                 )
 q_alg.add_quadrant( 
                 # very loose
                 'ringer_v8_vloose', 'T0HLTElectronRingerVeryLoose_v8', # Ringer v8
-                'ringer_v11_vloose', 'T0HLTElectronRingerVeryLoose_v11'  # Ringer v11
+                'ringer_v9_vloose', 'T0HLTElectronRingerVeryLoose_v9'  # Ringer v9
                 )
 
 #etlist = [3.0, 7.0, 10.0, 15.0]
@@ -59,19 +59,19 @@ ToolSvc += q_alg
 
 
 outputs = [
-            'quadrant_data17_egam2_lhtight_ringer_v8_and_ringer_v11',
-            'quadrant_data17_egam2_lhmedium_ringer_v8_and_ringer_v11',
-            'quadrant_data17_egam2_lhloose_ringer_v8_and_ringer_v11',
-            'quadrant_data17_egam2_lhvloose_ringer_v8_and_ringer_v11',
+            'quadrant_data17_egam2_lhtight_ringer_v8_and_ringer_v9',
+            'quadrant_data17_egam2_lhmedium_ringer_v8_and_ringer_v9',
+            'quadrant_data17_egam2_lhloose_ringer_v8_and_ringer_v9',
+            'quadrant_data17_egam2_lhvloose_ringer_v8_and_ringer_v9',
             ]
 
-legends = ['Both Approved', 'Ringer V8 Only Approved', 'Ringer V11 Only Approved', 'Both Rejected']
+legends = ['Both Approved', 'Ringer V8 Only Approved', 'Ringer V9 Only Approved', 'Both Rejected']
 
 names   = [
-            'Quadrant Analysis lhtight Ringer V8 vs Ringer V11 (data17-EGAM1)',
-            'Quadrant Analysis lhmedium Ringer V8 vs Ringer V11 (data17-EGAM1)',
-            'Quadrant Analysis lhloose Ringer V8 vs Ringer V11 (data17-EGAM1)',
-            'Quadrant Analysis lhvloose Ringer V8 vs Ringer V11 (data17-EGAM1)',
+            'Quadrant Analysis lhtight Ringer V8 vs Ringer V9 (data17-EGAM1)',
+            'Quadrant Analysis lhmedium Ringer V8 vs Ringer V9 (data17-EGAM1)',
+            'Quadrant Analysis lhloose Ringer V8 vs Ringer V9 (data17-EGAM1)',
+            'Quadrant Analysis lhvloose Ringer V8 vs Ringer V9 (data17-EGAM1)',
             ]
 
 q_alg.plot(outputs, outputs, names,legends=legends, doPDF=True)

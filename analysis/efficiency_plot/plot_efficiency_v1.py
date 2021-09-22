@@ -83,6 +83,7 @@ for ichain in chain_dict_config.keys():
     eff_et  = [ get(sg, basepath+'/'+trigger+'/Efficiency/%s'%(istep), 'et') for trigger in triggers ]
     eff_eta = [ get(sg, basepath+'/'+trigger+'/Efficiency/%s'%(istep), 'eta') for trigger in triggers ]
     eff_phi = [ get(sg, basepath+'/'+trigger+'/Efficiency/%s'%(istep), 'phi') for trigger in triggers ]
+    eff_nvtx = [ get(sg, basepath+'/'+trigger+'/Efficiency/%s'%(istep), 'nvtx') for trigger in triggers ]
     eff_mu  = [ get(sg, basepath+'/'+trigger+'/Efficiency/%s'%(istep), 'mu', [8,20,60]) for trigger in triggers ]
     eff_deltaR  = [ get(sg, basepath+'/'+trigger+'/Efficiency/%s'%(istep), 'deltaR') for trigger in triggers ]
     
@@ -109,6 +110,9 @@ for ichain in chain_dict_config.keys():
 
       PlotProfiles( eff_et, legends=legends,runLabel='mc16 13TeV', outname='%s_et.pdf' %(plotname), theseColors=theseColors,
                     extraText1=ichain,doRatioCanvas=False, legendX1=.65, xlabel='E_{T}', rlabel='Trigger/Ref.',ylabel='Trigger Efficiency')
+      
+      PlotProfiles( eff_nvtx, legends=legends,runLabel='mc16 13TeV', outname='%s_nvtx.pdf' %(plotname), theseColors=theseColors,
+                    extraText1=ichain,doRatioCanvas=False, legendX1=.65, xlabel='nvtx', rlabel='Trigger/Ref.',ylabel='Trigger Efficiency')
 
       # plot png
       PlotProfiles( eff_eta, legends=legends,runLabel='mc16 13TeV', outname='%s_eta.png' %(plotname),theseColors=theseColors,
@@ -122,3 +126,6 @@ for ichain in chain_dict_config.keys():
 
       PlotProfiles( eff_deltaR, legends=legends,runLabel='mc16 13TeV', outname='%s_deltaR.png' %(plotname),theseColors=theseColors,
                     extraText1=ichain, doRatioCanvas=False, legendX1=.65, xlabel='#Delta R', rlabel='Trigger/Ref.',ylabel='Trigger Efficiency')
+
+      PlotProfiles( eff_nvtx, legends=legends,runLabel='mc16 13TeV', outname='%s_nvtx.png' %(plotname), theseColors=theseColors,
+                    extraText1=ichain,doRatioCanvas=False, legendX1=.65, xlabel='nvtx', rlabel='Trigger/Ref.',ylabel='Trigger Efficiency')

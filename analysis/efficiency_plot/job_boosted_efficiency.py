@@ -68,8 +68,8 @@ triggerList = [
                 'L1_EM3', 'HLT_e24_lhtight_nod0_ringer_v8_ivarloose'), 'el_lhtight', 24),
     Group(Chain('EMU_e24_lhtight_nod0_ringer_v8.1_ivarloose',
                 'L1_EM3', 'HLT_e24_lhtight_nod0_ringer_v8.1_ivarloose'), 'el_lhtight', 24),
-    Group(Chain('EMU_e24_lhtight_nod0_ringer_v9_ivarloose',
-                'L1_EM3', 'HLT_e24_lhtight_nod0_ringer_v9_ivarloose'), 'el_lhtight', 24),
+    #Group(Chain('EMU_e24_lhtight_nod0_ringer_v9_ivarloose',
+    #            'L1_EM3', 'HLT_e24_lhtight_nod0_ringer_v9_ivarloose'), 'el_lhtight', 24),
     Group(Chain('EMU_e24_lhtight_nod0_noringer_ivarloose',
                 'L1_EM3', 'HLT_e24_lhtight_nod0_noringer_ivarloose'), 'el_lhtight', 24),
     # e26_lhtight_nod0
@@ -77,8 +77,8 @@ triggerList = [
                 'L1_EM3', 'HLT_e26_lhtight_nod0_ringer_v8_ivarloose'), 'el_lhtight', 26),
     Group(Chain('EMU_e26_lhtight_nod0_ringer_v8.1_ivarloose',
                 'L1_EM3', 'HLT_e26_lhtight_nod0_ringer_v8.1_ivarloose'), 'el_lhtight', 26),                
-    Group(Chain('EMU_e26_lhtight_nod0_ringer_v9_ivarloose',
-                'L1_EM3', 'HLT_e26_lhtight_nod0_ringer_v9_ivarloose'), 'el_lhtight', 26),
+    #Group(Chain('EMU_e26_lhtight_nod0_ringer_v9_ivarloose',
+    #            'L1_EM3', 'HLT_e26_lhtight_nod0_ringer_v9_ivarloose'), 'el_lhtight', 26),
     Group(Chain('EMU_e26_lhtight_nod0_noringer_ivarloose',
                 'L1_EM3', 'HLT_e26_lhtight_nod0_noringer_ivarloose'), 'el_lhtight', 26),
     # e60_lhmedium_nod0
@@ -86,8 +86,8 @@ triggerList = [
                 'L1_EM3', 'HLT_e60_lhmedium_nod0_ringer_v8'), 'el_lhmedium', 60),
     Group(Chain('EMU_e60_lhmedium_nod0_ringer_v8.1',
                 'L1_EM3', 'HLT_e60_lhmedium_nod0_ringer_v8.1'), 'el_lhmedium', 60),
-    Group(Chain('EMU_e60_lhmedium_nod0_ringer_v9',
-                'L1_EM3', 'HLT_e60_lhmedium_nod0_ringer_v9'), 'el_lhmedium', 60),
+    #Group(Chain('EMU_e60_lhmedium_nod0_ringer_v9',
+    #            'L1_EM3', 'HLT_e60_lhmedium_nod0_ringer_v9'), 'el_lhmedium', 60),
     Group(Chain('EMU_e60_lhmedium_nod0_noringer',
                 'L1_EM3', 'HLT_e60_lhmedium_nod0_noringer'), 'el_lhmedium', 60),  
     # e140_lhloose_nod0
@@ -95,14 +95,14 @@ triggerList = [
                 'L1_EM3', 'HLT_e140_lhloose_nod0_ringer_v8'), 'el_lhloose', 140),
     Group(Chain('EMU_e140_lhloose_nod0_ringer_v8.1',
                 'L1_EM3', 'HLT_e140_lhloose_nod0_ringer_v8.1'), 'el_lhloose', 140),
-    Group(Chain('EMU_e140_lhloose_nod0_ringer_v9',
-                'L1_EM3', 'HLT_e140_lhloose_nod0_ringer_v9'), 'el_lhloose', 140),
+    #Group(Chain('EMU_e140_lhloose_nod0_ringer_v9',
+    #            'L1_EM3', 'HLT_e140_lhloose_nod0_ringer_v9'), 'el_lhloose', 140),
     Group(Chain('EMU_e140_lhloose_nod0_noringer',
                 'L1_EM3', 'HLT_e140_lhloose_nod0_noringer'), 'el_lhloose', 140),
 ]
 
 from EfficiencyTools import EfficiencyTool
-alg = EfficiencyTool( "Efficiency", dojpsiee=False , eta_bins = np.arange(-2.0,2.0,0.5))
+alg = EfficiencyTool( "Efficiency", dojpsiee=False , eta_bins = np.arange(-2.0,2.5,0.5))
 
 for group in triggerList:
   alg.addGroup( group )

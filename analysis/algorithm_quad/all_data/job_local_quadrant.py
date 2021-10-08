@@ -29,6 +29,10 @@ parser.add_argument('--egam7', action='store_true',
     dest='doEgam7', required = False, 
     help = "The colelcted sample came from EGAM7 skemma.")
 
+parser.add_argument('--isBoosted', action='store_true', 
+    dest='isBoosted', required = False, 
+    help = "Data is MC boosted electron data.")
+
 
 import sys,os
 if len(sys.argv)==1:
@@ -37,9 +41,15 @@ if len(sys.argv)==1:
 
 args = parser.parse_args()
 
+if args.isBoosted:
+  m_tree_path = '*/HLT/Physval/Egamma/probes'
+else:
+  m_tree_path = '*/HLT/Physval/Egamma/fakes'  
+
+
 acc = EventATLAS( "EventATLASLoop",
                   inputFiles = args.inputFiles, 
-                  treePath= '*/HLT/Physval/Egamma/probes',
+                  treePath= m_tree_path,
                   dataframe = DataframeEnum.Electron_v1, 
                   outputFile = args.outputFile,
                   level = LoggingLevel.INFO

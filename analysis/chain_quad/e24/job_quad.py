@@ -44,9 +44,16 @@ if len(sys.argv)==1:
 
 args = parser.parse_args()
 
+
+if args.isBoosted:
+  m_tree_path = '*/HLT/Physval/Egamma/probes'
+else:
+  m_tree_path = '*/HLT/Physval/Egamma/fakes'  
+
+
 acc = EventATLAS( "EventATLASLoop",
                   inputFiles = args.inputFiles, 
-                  treePath= '*/HLT/Physval/Egamma/probes',
+                  treePath= m_tree_path, # for boosted events
                   dataframe = DataframeEnum.Electron_v1, 
                   outputFile = args.outputFile,
                   level = LoggingLevel.INFO
@@ -83,7 +90,7 @@ from TrigEgammaEmulationTool import Chain
 
 triggerList = [
                 Chain( "EMU_e24_lhtight_nod0_ringer_v8_ivarloose" ,  "L1_EM3", "HLT_e24_lhtight_nod0_ringer_v8_ivarloose"  ),
-                Chain( "EMU_e24_lhtight_nod0_ringer_v9_ivarloose",  "L1_EM3", "HLT_e24_lhtight_nod0_ringer_v9_ivarloose" ),
+                Chain( "EMU_e24_lhtight_nod0_ringer_v8.1_ivarloose",  "L1_EM3", "HLT_e24_lhtight_nod0_ringer_v8.1_ivarloose" ),
               ]
 
 if jr_verbose: print(6)
@@ -100,7 +107,7 @@ if jr_verbose: print(7)
 from QuadrantTools import QuadrantTool
 q_alg = QuadrantTool("Quadrant")
 q_alg.add_quadrant( "HLT_e24_lhtight_nod0_ringer_v8_ivarloose"  , "EMU_e24_lhtight_nod0_ringer_v8_ivarloose", # Ringer v8
-                    'HLT_e24_lhtight_nod0_ringer_v9_ivarloose' , "EMU_e24_lhtight_nod0_ringer_v9_ivarloose" # Ringer v11
+                    'HLT_e24_lhtight_nod0_ringer_v8.1_ivarloose' , "EMU_e24_lhtight_nod0_ringer_v8.1_ivarloose" # Ringer v11
                   ) 
 
 if jr_verbose: print(8)
@@ -112,8 +119,10 @@ if jr_verbose: print(8)
 
 if jr_verbose: print(9)
 
+import numpy as np
+
 etlist = [15.0,20.0,25.0,30.0,35.0,40.0,45.0,50.0,50000.0]
-etalist= [ 0.0, 0.6, 0.8, 1.15, 1.37, 1.52, 1.81, 2.01, 2.37, 2.47 ]
+etalist= np.arange(-2.0,2.5,0.5) #[ 0.0, 0.6, 0.8, 1.15, 1.37, 1.52, 1.81, 2.01, 2.37, 2.47 ]
 #etlist = [3.0, 7.0, 10.0, 15.0]
 #etalist= [ 0.0, 0.8, 1.37, 1.54, 2.37, 2.47]
 q_alg.setEtBinningValues(etlist)

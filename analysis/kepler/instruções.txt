@@ -1,0 +1,6 @@
+Para utilizar o kepler
+1 - rodar a imagem ringer_base.sif no singularity
+2 - rodar o script de setup do root
+3 - ir para o diretório do gaugi e na raiz deste rodar source scripts/setup.sh
+4 - ir para o diretório do kepler e na raiz deste rodar source scripts/setup.sh
+5 - rodar o jupyter-lab no diretório de análise

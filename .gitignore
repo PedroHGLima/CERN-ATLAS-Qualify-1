@@ -131,3 +131,6 @@ dmypy.json
 
 # docker image path
 docker_images/images/*
+
+analysis/kepler/kepler_imgs/*
+analysis/kepler/kepler_imgs_18/*

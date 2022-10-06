@@ -12,7 +12,7 @@ from kepler.pandas.decorators import create_ringer_v8_decorators, create_ringer_
 from kepler.pandas.decorators import create_ringer_v8_new_decorators, create_ringer_v8_half_fast_decorators, create_ringer_v8_34_decorators, create_ringer_v8_half_decorators, create_ringer_v8_14_decorators
 
 import kepler
-import tqdm
+from tqdm import tqdm
 import rootplotlib as rpl
 import mplhep as hep
 import root_numpy
@@ -65,7 +65,7 @@ real_run = False
 
 
 # codigo modificado
-dpath = '/home/plima/data/data17_13TeV.AllPeriods.sgn.probes_lhvloose_EGAM1.bkg.vprobes_vlhvloose_EGAM7.GRL_v97.25bins'
+dpath = '/home/pedro.lima/data/data17_13TeV.AllPeriods.sgn.probes_lhvloose_EGAM1.bkg.vprobes_vlhvloose_EGAM7.GRL_v97.25bins'
 dpath+= '/data17_13TeV.AllPeriods.sgn.probes_lhvloose_EGAM1.bkg.vprobes_vlhvloose_EGAM7.GRL_v97.25bins_et{ET}_eta{ETA}.npz'
 #                                               \
 #                                           very loose
@@ -182,7 +182,7 @@ drop_columns = [
 # In[12]:
 
 
-os.environ['RINGER_TUNING_PATH']='/home/plima/workspace/CERN-ATLAS-Qualify-1/analysis/tunings'
+os.environ['RINGER_TUNING_PATH']='/home/pedro.lima/workspace/CERN-ATLAS-Qualify-1/analysis/tunings'
 
 decorators = create_ringer_v8_new_decorators()
 decorators += create_ringer_v8_half_fast_decorators()
@@ -263,7 +263,7 @@ def quad_reta(step_num=0):
     var = 'trig_L2_cl_reta'
 
     for step in [['L2Calo', 'L2', 'EFCalo', 'HLT'][step_num]]:
-        plot_path = '/home/plima/workspace/CERN-ATLAS-Qualify-1/analysis/kepler/kepler_imgs/quad/reta'
+        plot_path = '/home/pedro.lima/workspace/CERN-ATLAS-Qualify-1/analysis/kepler/kepler_imgs/quad/reta'
 
         chain_list = ['e24_lhtight_nod0_{RINGER}_ivarloose',
                       'e26_lhtight_nod0_{RINGER}_ivarloose',
@@ -285,8 +285,8 @@ def quad_reta(step_num=0):
 
             # calculate counts for each quad
             ## constructing the tables here helps in saving memory
-            upper_limit = 0.8
-            lower_limit = 1.04
+            upper_limit = 1.04
+            lower_limit = 0.8
             
             [count_total, bins, nome]  = plt.hist(table.loc[(table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
             [count_first, bins, nome]  = plt.hist(table.loc[(table[chain.format(RINGER = alg1)] ==1) & (table[chain.format(RINGER = alg2)] ==1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
@@ -334,7 +334,7 @@ def quad_eratio(step_num=0):
     var = 'trig_L2_cl_eratio'
 
     for step in [['L2Calo', 'L2', 'EFCalo', 'HLT'][step_num]]:
-        plot_path = '/home/plima/workspace/CERN-ATLAS-Qualify-1/analysis/kepler/kepler_imgs/quad/eratio'
+        plot_path = '/home/pedro.lima/workspace/CERN-ATLAS-Qualify-1/analysis/kepler/kepler_imgs/quad/eratio'
 
         chain_list = ['e24_lhtight_nod0_{RINGER}_ivarloose',
                       'e26_lhtight_nod0_{RINGER}_ivarloose',
@@ -356,7 +356,7 @@ def quad_eratio(step_num=0):
 
             # calculate counts for each quad
             ## constructing the tables here helps in saving memory
-            upper_limit = 1.4
+            upper_limit = 1.04
             lower_limit = 0.5
             
             [count_total, bins, nome]  = plt.hist(table.loc[(table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
@@ -405,7 +405,7 @@ def quad_f1(step_num=0):
     var = 'trig_L2_cl_f1'
 
     for step in [['L2Calo', 'L2', 'EFCalo', 'HLT'][step_num]]:
-        plot_path = '/home/plima/workspace/CERN-ATLAS-Qualify-1/analysis/kepler/kepler_imgs/quad/f1'
+        plot_path = '/home/pedro.lima/workspace/CERN-ATLAS-Qualify-1/analysis/kepler/kepler_imgs/quad/f1'
 
         chain_list = ['e24_lhtight_nod0_{RINGER}_ivarloose',
                       'e26_lhtight_nod0_{RINGER}_ivarloose',
@@ -476,7 +476,7 @@ def quad_f3(step_num=0):
     var = 'trig_L2_cl_f3'
 
     for step in [['L2Calo', 'L2', 'EFCalo', 'HLT'][step_num]]:
-        plot_path = '/home/plima/workspace/CERN-ATLAS-Qualify-1/analysis/kepler/kepler_imgs/quad/f3'
+        plot_path = '/home/pedro.lima/workspace/CERN-ATLAS-Qualify-1/analysis/kepler/kepler_imgs/quad/f3'
 
         chain_list = ['e24_lhtight_nod0_{RINGER}_ivarloose',
                       'e26_lhtight_nod0_{RINGER}_ivarloose',
@@ -498,8 +498,8 @@ def quad_f3(step_num=0):
 
             # calculate counts for each quad
             ## constructing the tables here helps in saving memory
-            upper_limit = -0.05
-            lower_limit = 0.15
+            upper_limit = 0.15
+            lower_limit = -0.05
             
             [count_total, bins, nome]  = plt.hist(table.loc[(table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
             [count_first, bins, nome]  = plt.hist(table.loc[(table[chain.format(RINGER = alg1)] ==1) & (table[chain.format(RINGER = alg2)]==1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
@@ -547,7 +547,7 @@ def quad_weta(step_num=0):
     var = 'trig_L2_cl_weta2'
 
     for step in [['L2Calo', 'L2', 'EFCalo', 'HLT'][step_num]]:
-        plot_path = '/home/plima/workspace/CERN-ATLAS-Qualify-1/analysis/kepler/kepler_imgs/quad/weta'
+        plot_path = '/home/pedro.lima/workspace/CERN-ATLAS-Qualify-1/analysis/kepler/kepler_imgs/quad/weta'
 
         chain_list = ['e24_lhtight_nod0_{RINGER}_ivarloose',
                       'e26_lhtight_nod0_{RINGER}_ivarloose',
@@ -569,8 +569,8 @@ def quad_weta(step_num=0):
 
             # calculate counts for each quad
             ## constructing the tables here helps in saving memory
-            upper_limit = 0.005
-            lower_limit = 0.02
+            upper_limit = 0.02
+            lower_limit = 0.005
             
             [count_total, bins, nome]  = plt.hist(table.loc[(table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
             [count_first, bins, nome]  = plt.hist(table.loc[(table[chain.format(RINGER = alg1)] ==1) & (table[chain.format(RINGER = alg2)]==1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
@@ -618,7 +618,7 @@ def quad_wstot(step_num=0):
     var = 'trig_L2_cl_wstot'
 
     for step in [['L2Calo', 'L2', 'EFCalo', 'HLT'][step_num]]:
-        plot_path = '/home/plima/workspace/CERN-ATLAS-Qualify-1/analysis/kepler/kepler_imgs/quad/wstot'
+        plot_path = '/home/pedro.lima/workspace/CERN-ATLAS-Qualify-1/analysis/kepler/kepler_imgs/quad/wstot'
 
         chain_list = ['e24_lhtight_nod0_{RINGER}_ivarloose',
                       'e26_lhtight_nod0_{RINGER}_ivarloose',
@@ -640,8 +640,8 @@ def quad_wstot(step_num=0):
 
             # calculate counts for each quad
             ## constructing the tables here helps in saving memory
-            upper_limit = 0
-            lower_limit = 8
+            upper_limit = 8
+            lower_limit = 0
             
             [count_total, bins, nome]  = plt.hist(table.loc[(table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
             [count_first, bins, nome]  = plt.hist(table.loc[(table[chain.format(RINGER = alg1)] ==1) & (table[chain.format(RINGER = alg2)]==1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
@@ -688,7 +688,7 @@ from itertools import product
 algorithms = {'noringer': 'NoRinger reject',
               'ringer_v8_new':'V8 reject',
               'ringer_v8_half': 'V12 reject',
-              'ringer_v8_14': 'V8.1/4 reject',
+              'ringer_v8_14': 'V8.14 reject',
              }
 done = set()
 
@@ -707,7 +707,7 @@ for comparison in product(algorithms, repeat=2):
     file_name = lbl1.split(' ')[0] + 'x' + lbl2.split(' ')[0]
     
     # Variables to plot
-    for i in range(3+1):
+    for i in tqdm(range(3+1)):
         quad_reta(i)
         quad_eratio(i)
         quad_f1(i)

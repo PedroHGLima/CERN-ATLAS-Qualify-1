@@ -259,7 +259,7 @@ table.head()
 # In[28]:
 
 
-def quad_reta(step_num=0):
+def quad_reta(step_num=0, electron=True):
     var = 'trig_L2_cl_reta'
 
     for step in [['L2Calo', 'L2', 'EFCalo', 'HLT'][step_num]]:
@@ -285,14 +285,14 @@ def quad_reta(step_num=0):
 
             # calculate counts for each quad
             ## constructing the tables here helps in saving memory
-            upper_limit = 1.04
+            upper_limit = 1.1
             lower_limit = 0.8
             
-            [count_total, bins, nome]  = plt.hist(table.loc[(table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
-            [count_first, bins, nome]  = plt.hist(table.loc[(table[chain.format(RINGER = alg1)] ==1) & (table[chain.format(RINGER = alg2)] ==1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
-            [count_second, bins, nome] = plt.hist(table.loc[(table[chain.format(RINGER = alg1)] !=1) & (table[chain.format(RINGER = alg2)] ==1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
-            [count_third, bins, nome]  = plt.hist(table.loc[(table[chain.format(RINGER = alg1)] !=1) & (table[chain.format(RINGER = alg2)] !=1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
-            [count_fourth, bins, nome] = plt.hist(table.loc[(table[chain.format(RINGER = alg1)] ==1) & (table[chain.format(RINGER = alg2)] !=1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
+            [count_total, bins, nome]  = plt.hist(table.loc[(table['target']==electron) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
+            [count_first, bins, nome]  = plt.hist(table.loc[(table['target']==electron) & (table[chain.format(RINGER = alg1)] ==1) & (table[chain.format(RINGER = alg2)] ==1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
+            [count_second, bins, nome] = plt.hist(table.loc[(table['target']==electron) & (table[chain.format(RINGER = alg1)] !=1) & (table[chain.format(RINGER = alg2)] ==1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
+            [count_third, bins, nome]  = plt.hist(table.loc[(table['target']==electron) & (table[chain.format(RINGER = alg1)] !=1) & (table[chain.format(RINGER = alg2)] !=1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
+            [count_fourth, bins, nome] = plt.hist(table.loc[(table['target']==electron) & (table[chain.format(RINGER = alg1)] ==1) & (table[chain.format(RINGER = alg2)] !=1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
             plt.clf()
 
             # create fig
@@ -319,9 +319,10 @@ def quad_reta(step_num=0):
             ax1.set(ylabel='Disagreement [%]', xlabel='$R_{\eta}$')
 
             # save fig
-            print('Saving ' + plot_path + '/quad_reta_%s_%s_%s ...'%(file_name, chain.split('_')[0], chain.split('_')[1]))
-            fig.savefig(plot_path + '/quad_reta_%s_%s_%s.png'%(file_name, chain.split('_')[0], chain.split('_')[1]))
-            fig.savefig(plot_path + '/quad_reta_%s_%s_%s.pdf'%(file_name, chain.split('_')[0], chain.split('_')[1]))
+            part = 'electron' if electron else 'jet'
+            print('Saving ' + plot_path + '/quad_reta_%s_%s_%s_%s ...'%(part, file_name, chain.split('_')[0], chain.split('_')[1]))
+            fig.savefig(plot_path + '/quad_reta_%s_%s_%s_%s.png'%(part, file_name, chain.split('_')[0], chain.split('_')[1]))
+            fig.savefig(plot_path + '/quad_reta_%s_%s_%s_%s.pdf'%(part, file_name, chain.split('_')[0], chain.split('_')[1]))
             fig.show()
 
 
@@ -330,7 +331,7 @@ def quad_reta(step_num=0):
 # In[29]:
 
 
-def quad_eratio(step_num=0):
+def quad_eratio(step_num=0, electron=True):
     var = 'trig_L2_cl_eratio'
 
     for step in [['L2Calo', 'L2', 'EFCalo', 'HLT'][step_num]]:
@@ -359,11 +360,11 @@ def quad_eratio(step_num=0):
             upper_limit = 1.04
             lower_limit = 0.5
             
-            [count_total, bins, nome]  = plt.hist(table.loc[(table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
-            [count_first, bins, nome]  = plt.hist(table.loc[(table[chain.format(RINGER = alg1)] ==1) & (table[chain.format(RINGER = alg2)] ==1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
-            [count_second, bins, nome] = plt.hist(table.loc[(table[chain.format(RINGER = alg1)] !=1) & (table[chain.format(RINGER = alg2)] ==1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
-            [count_third, bins, nome]  = plt.hist(table.loc[(table[chain.format(RINGER = alg1)] !=1) & (table[chain.format(RINGER = alg2)] !=1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
-            [count_fourth, bins, nome] = plt.hist(table.loc[(table[chain.format(RINGER = alg1)] ==1) & (table[chain.format(RINGER = alg2)] !=1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
+            [count_total, bins, nome]  = plt.hist(table.loc[(table['target']==electron) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
+            [count_first, bins, nome]  = plt.hist(table.loc[(table['target']==electron) & (table[chain.format(RINGER = alg1)] ==1) & (table[chain.format(RINGER = alg2)] ==1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
+            [count_second, bins, nome] = plt.hist(table.loc[(table['target']==electron) & (table[chain.format(RINGER = alg1)] !=1) & (table[chain.format(RINGER = alg2)] ==1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
+            [count_third, bins, nome]  = plt.hist(table.loc[(table['target']==electron) & (table[chain.format(RINGER = alg1)] !=1) & (table[chain.format(RINGER = alg2)] !=1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
+            [count_fourth, bins, nome] = plt.hist(table.loc[(table['target']==electron) & (table[chain.format(RINGER = alg1)] ==1) & (table[chain.format(RINGER = alg2)] !=1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
             plt.clf()
 
             # create fig
@@ -390,9 +391,10 @@ def quad_eratio(step_num=0):
             ax1.set(ylabel='Disagreement [%]', xlabel='$E_{ratio}$')
 
             # save fig
-            print('Saving ' + plot_path + '/quad_eratio_%s_%s_%s ...'%(file_name, chain.split('_')[0], chain.split('_')[1]))
-            fig.savefig(plot_path + '/quad_eratio_%s_%s_%s.png'%(file_name, chain.split('_')[0], chain.split('_')[1]))
-            fig.savefig(plot_path + '/quad_eratio_%s_%s_%s.pdf'%(file_name, chain.split('_')[0], chain.split('_')[1]))
+            part = 'electron' if electron else 'jet'
+            print('Saving ' + plot_path + '/quad_eratio_%s_%s_%s_%s ...'%(part, file_name, chain.split('_')[0], chain.split('_')[1]))
+            fig.savefig(plot_path + '/quad_eratio_%s_%s_%s_%s.png'%(part, file_name, chain.split('_')[0], chain.split('_')[1]))
+            fig.savefig(plot_path + '/quad_eratio_%s_%s_%s_%s.pdf'%(part, file_name, chain.split('_')[0], chain.split('_')[1]))
             fig.show()
 
 
@@ -401,7 +403,7 @@ def quad_eratio(step_num=0):
 # In[30]:
 
 
-def quad_f1(step_num=0):
+def quad_f1(step_num=0, electron=True):
     var = 'trig_L2_cl_f1'
 
     for step in [['L2Calo', 'L2', 'EFCalo', 'HLT'][step_num]]:
@@ -428,13 +430,13 @@ def quad_f1(step_num=0):
             # calculate counts for each quad
             ## constructing the tables here helps in saving memory
             upper_limit = 0.7
-            lower_limit = 0.01
+            lower_limit = -0.01
             
-            [count_total, bins, nome]  = plt.hist(table.loc[(table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
-            [count_first, bins, nome]  = plt.hist(table.loc[(table[chain.format(RINGER = alg1)] ==1) & (table[chain.format(RINGER = alg2)]==1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
-            [count_second, bins, nome] = plt.hist(table.loc[(table[chain.format(RINGER = alg1)] !=1) & (table[chain.format(RINGER = alg2)]==1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
-            [count_third, bins, nome]  = plt.hist(table.loc[(table[chain.format(RINGER = alg1)] !=1) & (table[chain.format(RINGER = alg2)]!=1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
-            [count_fourth, bins, nome] = plt.hist(table.loc[(table[chain.format(RINGER = alg1)] ==1) & (table[chain.format(RINGER = alg2)]!=1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
+            [count_total, bins, nome]  = plt.hist(table.loc[(table['target']==electron) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
+            [count_first, bins, nome]  = plt.hist(table.loc[(table['target']==electron) & (table[chain.format(RINGER = alg1)] ==1) & (table[chain.format(RINGER = alg2)]==1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
+            [count_second, bins, nome] = plt.hist(table.loc[(table['target']==electron) & (table[chain.format(RINGER = alg1)] !=1) & (table[chain.format(RINGER = alg2)]==1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
+            [count_third, bins, nome]  = plt.hist(table.loc[(table['target']==electron) & (table[chain.format(RINGER = alg1)] !=1) & (table[chain.format(RINGER = alg2)]!=1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
+            [count_fourth, bins, nome] = plt.hist(table.loc[(table['target']==electron) & (table[chain.format(RINGER = alg1)] ==1) & (table[chain.format(RINGER = alg2)]!=1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
             plt.clf()
 
             # create fig
@@ -461,9 +463,10 @@ def quad_f1(step_num=0):
             ax1.set(ylabel='Disagreement [%]', xlabel='$f_{1}$')
 
             # save fig
-            print('Saving ' + plot_path + '/quad_f1_%s_%s_%s ...'%(file_name, chain.split('_')[0], chain.split('_')[1]))
-            fig.savefig(plot_path + '/quad_f1_%s_%s_%s.png'%(file_name, chain.split('_')[0], chain.split('_')[1]))
-            fig.savefig(plot_path + '/quad_f1_%s_%s_%s.pdf'%(file_name, chain.split('_')[0], chain.split('_')[1]))
+            part = 'electron' if electron else 'jet'
+            print('Saving ' + plot_path + '/quad_f1_%s_%s_%s_%s ...'%(part, file_name, chain.split('_')[0], chain.split('_')[1]))
+            fig.savefig(plot_path + '/quad_f1_%s_%s_%s_%s.png'%(part, file_name, chain.split('_')[0], chain.split('_')[1]))
+            fig.savefig(plot_path + '/quad_f1_%s_%s_%s_%s.pdf'%(part, file_name, chain.split('_')[0], chain.split('_')[1]))
             fig.show()
 
 
@@ -472,7 +475,7 @@ def quad_f1(step_num=0):
 # In[31]:
 
 
-def quad_f3(step_num=0):
+def quad_f3(step_num=0, electron=True):
     var = 'trig_L2_cl_f3'
 
     for step in [['L2Calo', 'L2', 'EFCalo', 'HLT'][step_num]]:
@@ -501,11 +504,11 @@ def quad_f3(step_num=0):
             upper_limit = 0.15
             lower_limit = -0.05
             
-            [count_total, bins, nome]  = plt.hist(table.loc[(table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
-            [count_first, bins, nome]  = plt.hist(table.loc[(table[chain.format(RINGER = alg1)] ==1) & (table[chain.format(RINGER = alg2)]==1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
-            [count_second, bins, nome] = plt.hist(table.loc[(table[chain.format(RINGER = alg1)] !=1) & (table[chain.format(RINGER = alg2)]==1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
-            [count_third, bins, nome]  = plt.hist(table.loc[(table[chain.format(RINGER = alg1)] !=1) & (table[chain.format(RINGER = alg2)]!=1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
-            [count_fourth, bins, nome] = plt.hist(table.loc[(table[chain.format(RINGER = alg1)] ==1) & (table[chain.format(RINGER = alg2)]!=1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
+            [count_total, bins, nome]  = plt.hist(table.loc[(table['target']==electron) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
+            [count_first, bins, nome]  = plt.hist(table.loc[(table['target']==electron) & (table[chain.format(RINGER = alg1)] ==1) & (table[chain.format(RINGER = alg2)]==1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
+            [count_second, bins, nome] = plt.hist(table.loc[(table['target']==electron) & (table[chain.format(RINGER = alg1)] !=1) & (table[chain.format(RINGER = alg2)]==1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
+            [count_third, bins, nome]  = plt.hist(table.loc[(table['target']==electron) & (table[chain.format(RINGER = alg1)] !=1) & (table[chain.format(RINGER = alg2)]!=1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
+            [count_fourth, bins, nome] = plt.hist(table.loc[(table['target']==electron) & (table[chain.format(RINGER = alg1)] ==1) & (table[chain.format(RINGER = alg2)]!=1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
             plt.clf()
 
             # create fig
@@ -532,9 +535,10 @@ def quad_f3(step_num=0):
             ax1.set(ylabel='Disagreement [%]', xlabel='$f_{3}$')
 
             # save fig
-            print('Saving ' + plot_path + '/quad_f3_%s_%s_%s ...'%(file_name, chain.split('_')[0], chain.split('_')[1]))
-            fig.savefig(plot_path + '/quad_f3_%s_%s_%s.png'%(file_name, chain.split('_')[0], chain.split('_')[1]))
-            fig.savefig(plot_path + '/quad_f3_%s_%s_%s.pdf'%(file_name, chain.split('_')[0], chain.split('_')[1]))
+            part = 'electron' if electron else 'jet'
+            print('Saving ' + plot_path + '/quad_f3_%s_%s_%s_%s ...'%(part, file_name, chain.split('_')[0], chain.split('_')[1]))
+            fig.savefig(plot_path + '/quad_f3_%s_%s_%s_%s.png'%(part, file_name, chain.split('_')[0], chain.split('_')[1]))
+            fig.savefig(plot_path + '/quad_f3_%s_%s_%s_%s.pdf'%(part, file_name, chain.split('_')[0], chain.split('_')[1]))
             fig.show()
 
 
@@ -543,7 +547,7 @@ def quad_f3(step_num=0):
 # In[32]:
 
 
-def quad_weta(step_num=0):
+def quad_weta(step_num=0, electron=True):
     var = 'trig_L2_cl_weta2'
 
     for step in [['L2Calo', 'L2', 'EFCalo', 'HLT'][step_num]]:
@@ -572,11 +576,11 @@ def quad_weta(step_num=0):
             upper_limit = 0.02
             lower_limit = 0.005
             
-            [count_total, bins, nome]  = plt.hist(table.loc[(table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
-            [count_first, bins, nome]  = plt.hist(table.loc[(table[chain.format(RINGER = alg1)] ==1) & (table[chain.format(RINGER = alg2)]==1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
-            [count_second, bins, nome] = plt.hist(table.loc[(table[chain.format(RINGER = alg1)] !=1) & (table[chain.format(RINGER = alg2)]==1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
-            [count_third, bins, nome]  = plt.hist(table.loc[(table[chain.format(RINGER = alg1)] !=1) & (table[chain.format(RINGER = alg2)]!=1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
-            [count_fourth, bins, nome] = plt.hist(table.loc[(table[chain.format(RINGER = alg1)] ==1) & (table[chain.format(RINGER = alg2)]!=1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
+            [count_total, bins, nome]  = plt.hist(table.loc[(table['target']==electron) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
+            [count_first, bins, nome]  = plt.hist(table.loc[(table['target']==electron) & (table[chain.format(RINGER = alg1)] ==1) & (table[chain.format(RINGER = alg2)]==1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
+            [count_second, bins, nome] = plt.hist(table.loc[(table['target']==electron) & (table[chain.format(RINGER = alg1)] !=1) & (table[chain.format(RINGER = alg2)]==1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
+            [count_third, bins, nome]  = plt.hist(table.loc[(table['target']==electron) & (table[chain.format(RINGER = alg1)] !=1) & (table[chain.format(RINGER = alg2)]!=1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
+            [count_fourth, bins, nome] = plt.hist(table.loc[(table['target']==electron) & (table[chain.format(RINGER = alg1)] ==1) & (table[chain.format(RINGER = alg2)]!=1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
             plt.clf()
 
             # create fig
@@ -603,9 +607,10 @@ def quad_weta(step_num=0):
             ax1.set(ylabel='Disagreement [%]', xlabel='$w_{\eta}$')
 
             # save fig
-            print('Saving ' + plot_path + '/quad_weta_%s_%s_%s ...'%(file_name, chain.split('_')[0], chain.split('_')[1]))
-            fig.savefig(plot_path + '/quad_weta_%s_%s_%s.png'%(file_name, chain.split('_')[0], chain.split('_')[1]))
-            fig.savefig(plot_path + '/quad_weta_%s_%s_%s.pdf'%(file_name, chain.split('_')[0], chain.split('_')[1]))
+            part = 'electron' if electron else 'jet'
+            print('Saving ' + plot_path + '/quad_weta_%s_%s_%s_%s ...'%(part, file_name, chain.split('_')[0], chain.split('_')[1]))
+            fig.savefig(plot_path + '/quad_weta_%s_%s_%s_%s.png'%(part, file_name, chain.split('_')[0], chain.split('_')[1]))
+            fig.savefig(plot_path + '/quad_weta_%s_%s_%s_%s.pdf'%(part, file_name, chain.split('_')[0], chain.split('_')[1]))
             fig.show()
 
 
@@ -614,7 +619,7 @@ def quad_weta(step_num=0):
 # In[33]:
 
 
-def quad_wstot(step_num=0):
+def quad_wstot(step_num=0, electron=True):
     var = 'trig_L2_cl_wstot'
 
     for step in [['L2Calo', 'L2', 'EFCalo', 'HLT'][step_num]]:
@@ -643,11 +648,11 @@ def quad_wstot(step_num=0):
             upper_limit = 8
             lower_limit = 0
             
-            [count_total, bins, nome]  = plt.hist(table.loc[(table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
-            [count_first, bins, nome]  = plt.hist(table.loc[(table[chain.format(RINGER = alg1)] ==1) & (table[chain.format(RINGER = alg2)]==1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
-            [count_second, bins, nome] = plt.hist(table.loc[(table[chain.format(RINGER = alg1)] !=1) & (table[chain.format(RINGER = alg2)]==1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
-            [count_third, bins, nome]  = plt.hist(table.loc[(table[chain.format(RINGER = alg1)] !=1) & (table[chain.format(RINGER = alg2)]!=1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
-            [count_fourth, bins, nome] = plt.hist(table.loc[(table[chain.format(RINGER = alg1)] ==1) & (table[chain.format(RINGER = alg2)]!=1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
+            [count_total, bins, nome]  = plt.hist(table.loc[(table['target']==electron) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
+            [count_first, bins, nome]  = plt.hist(table.loc[(table['target']==electron) & (table[chain.format(RINGER = alg1)] ==1) & (table[chain.format(RINGER = alg2)]==1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
+            [count_second, bins, nome] = plt.hist(table.loc[(table['target']==electron) & (table[chain.format(RINGER = alg1)] !=1) & (table[chain.format(RINGER = alg2)]==1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
+            [count_third, bins, nome]  = plt.hist(table.loc[(table['target']==electron) & (table[chain.format(RINGER = alg1)] !=1) & (table[chain.format(RINGER = alg2)]!=1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
+            [count_fourth, bins, nome] = plt.hist(table.loc[(table['target']==electron) & (table[chain.format(RINGER = alg1)] ==1) & (table[chain.format(RINGER = alg2)]!=1) & (table[var]<=upper_limit) & (table[var]>=lower_limit)][var], bins=bins)
             plt.clf()
 
             # create fig
@@ -674,9 +679,10 @@ def quad_wstot(step_num=0):
             ax1.set(ylabel='Disagreement [%]', xlabel='$w_{stot}$')
 
             # save fig
-            print('Saving ' + plot_path + '/quad_wstot_%s_%s_%s ...'%(file_name, chain.split('_')[0], chain.split('_')[1]))
-            fig.savefig(plot_path + '/quad_wstot_%s_%s_%s.png'%(file_name, chain.split('_')[0], chain.split('_')[1]))
-            fig.savefig(plot_path + '/quad_wstot_%s_%s_%s.pdf'%(file_name, chain.split('_')[0], chain.split('_')[1]))
+            part = 'electron' if electron else 'jet'
+            print('Saving ' + plot_path + '/quad_wstot_%s_%s_%s_%s ...'%(part, file_name, chain.split('_')[0], chain.split('_')[1]))
+            fig.savefig(plot_path + '/quad_wstot_%s_%s_%s_%s.png'%(part, file_name, chain.split('_')[0], chain.split('_')[1]))
+            fig.savefig(plot_path + '/quad_wstot_%s_%s_%s_%s.pdf'%(part, file_name, chain.split('_')[0], chain.split('_')[1]))
             fig.show()
 
 

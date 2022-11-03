@@ -271,7 +271,7 @@ def quad_reta(step_num=0, electron=True):
                       'e140_lhloose_nod0_{RINGER}'
                      ]
 
-        bins = int(np.sqrt(table.shape[0]))
+        bins = int(np.sqrt(table.loc[table.loc[(table['target']==electron) & (table[var]<=upper_limit) & (table[var]>=lower_limit)]].shape[0]))
 
         for chain in chain_list:
             chain = step + '_' + chain
@@ -343,7 +343,7 @@ def quad_eratio(step_num=0, electron=True):
                       'e140_lhloose_nod0_{RINGER}'
                      ]
 
-        bins = int(np.sqrt(table.shape[0]))
+        bins = int(np.sqrt(table.loc[table.loc[(table['target']==electron) & (table[var]<=upper_limit) & (table[var]>=lower_limit)]].shape[0]))
 
         for chain in chain_list:
             chain = step + '_' + chain
@@ -415,7 +415,7 @@ def quad_f1(step_num=0, electron=True):
                       'e140_lhloose_nod0_{RINGER}'
                      ]
 
-        bins = int(np.sqrt(table.shape[0]))
+        bins = int(np.sqrt(table.loc[table.loc[(table['target']==electron) & (table[var]<=upper_limit) & (table[var]>=lower_limit)]].shape[0]))
 
         for chain in chain_list:
             chain = step + '_' + chain
@@ -487,7 +487,7 @@ def quad_f3(step_num=0, electron=True):
                       'e140_lhloose_nod0_{RINGER}'
                      ]
 
-        bins = int(np.sqrt(table.shape[0]))
+        bins = int(np.sqrt(table.loc[table.loc[(table['target']==electron) & (table[var]<=upper_limit) & (table[var]>=lower_limit)]].shape[0]))
 
         for chain in chain_list:
             chain = step + '_' + chain
@@ -559,7 +559,7 @@ def quad_weta(step_num=0, electron=True):
                       'e140_lhloose_nod0_{RINGER}'
                      ]
 
-        bins = int(np.sqrt(table.shape[0]))
+        bins = int(np.sqrt(table.loc[table.loc[(table['target']==electron) & (table[var]<=upper_limit) & (table[var]>=lower_limit)]].shape[0]))
 
         for chain in chain_list:
             chain = step + '_' + chain
@@ -631,7 +631,7 @@ def quad_wstot(step_num=0, electron=True):
                       'e140_lhloose_nod0_{RINGER}'
                      ]
 
-        bins = int(np.sqrt(table.shape[0]))
+        bins = int(np.sqrt(table.loc[table.loc[(table['target']==electron) & (table[var]<=upper_limit) & (table[var]>=lower_limit)]].shape[0]))
 
         for chain in chain_list:
             chain = step + '_' + chain

@@ -1,0 +1,20 @@
+{
+"__name__":                                "TrigL2_20221107_v8-12",
+"__version__":                             "v12",
+"__operation__":                           "tight_cutbased",
+"__signature__":                           "electron",
+"Model__size":                             5,
+"Model__etmin":                            [15, 20, 30, 40, 50],
+"Model__etmax":                            [20, 30, 40, 50, 1000000],
+"Model__etamin":                           [0.0, 0.0, 0.0, 0.0, 0.0],
+"Model__etamax":                           [0.8, 0.8, 0.8, 0.8, 0.8],
+"Model__path":                             ["models/v12_lorenzetti.electronTight.et0_eta0.onnx", "models/v12_lorenzetti.electronTight.et1_eta0.onnx", "models/v12_lorenzetti.electronTight.et2_eta0.onnx", "models/v12_lorenzetti.electronTight.et3_eta0.onnx", "models/v12_lorenzetti.electronTight.et4_eta0.onnx"],
+"Threshold__size":                         [5],
+"Threshold__etmin":                        [15, 20, 30, 40, 50],
+"Threshold__etmax":                        [20, 30, 40, 50, 1000000],
+"Threshold__etamin":                       [0.0, 0.0, 0.0, 0.0, 0.0],
+"Threshold__etamax":                       [0.8, 0.8, 0.8, 0.8, 0.8],
+"Threshold__slope":                        [0, 0.0, 0, 0, -0.0036609950293154756],
+"Threshold__offset":                       [0.5134006355997754, 0.0, 0.7049498021376602, 0.8008567358834455, -0.12884949108994462],
+"Threshold__MaxAverageMu":                 [100, 100, 100, 100, 100]
+}

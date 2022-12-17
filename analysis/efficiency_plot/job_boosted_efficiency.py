@@ -76,7 +76,7 @@ triggerList = [
     Group(Chain('EMU_e26_lhtight_nod0_ringer_v8_ivarloose',
                 'L1_EM3', 'HLT_e26_lhtight_nod0_ringer_v8_ivarloose'), 'el_lhtight', 26),
     Group(Chain('EMU_e26_lhtight_nod0_ringer_v8.1_ivarloose',
-                'L1_EM3', 'HLT_e26_lhtight_nod0_ringer_v8.1_ivarloose'), 'el_lhtight', 26),                
+                'L1_EM3', 'HLT_e26_lhtight_nod0_ringer_v8.1_ivarloose'), 'el_lhtight', 26),
     #Group(Chain('EMU_e26_lhtight_nod0_ringer_v9_ivarloose',
     #            'L1_EM3', 'HLT_e26_lhtight_nod0_ringer_v9_ivarloose'), 'el_lhtight', 26),
     Group(Chain('EMU_e26_lhtight_nod0_noringer_ivarloose',
